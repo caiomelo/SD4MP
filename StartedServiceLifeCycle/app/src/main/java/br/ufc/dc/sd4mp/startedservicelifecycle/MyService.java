@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-public class MyService extends Service implements  Runnable {
+public class MyService extends Service implements Runnable {
 
     private static final String LOG_CATEGORY = "MyServiceLogCat";
 
@@ -28,6 +28,7 @@ public class MyService extends Service implements  Runnable {
 
     @Override
     public  void onDestroy() {
+        running = false;
         super.onDestroy();
         Log.i(LOG_CATEGORY, getClassName() + "onDestroy");
     }
@@ -36,7 +37,7 @@ public class MyService extends Service implements  Runnable {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(LOG_CATEGORY, getClassName() + "onStartCommand");
         running = true;
-        run();
+        new Thread(this).start();
         return START_NOT_STICKY;
     }
 
@@ -47,9 +48,9 @@ public class MyService extends Service implements  Runnable {
     public void run() {
         int i = 0;
 
-        while (running && i<5) {
+        while (running && i<10) {
             String message = "MyService is running!";
-            Log.i("(" + i++ +") MyService", message);
+            Log.i("(" + i++ + ") MyService", message);
 
             try {
                 Thread.sleep(1000);
