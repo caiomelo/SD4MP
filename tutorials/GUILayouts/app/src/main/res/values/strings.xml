@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">GUILayouts</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_relative_layout">RelativeLayout</string>
+    <string name="title_activity_list_view">ListView</string>
+    <string-array name="planets">
+        <item>Mercúrio</item>
+        <item>Vênus</item>
+        <item>Terra</item>
+        <item>Marte</item>
+        <item>Júpiter</item>
+        <item>Saturno</item>
+        <item>Urano</item>
+        <item>Netuno</item>
+        <item>Mercúrio-Bizarro</item>
+        <item>Vênus-Bizarro</item>
+        <item>Terra-Bizarro</item>
+        <item>Marte-Bizarro</item>
+        <item>Júpiter-Bizarro</item>
+        <item>Saturno-Bizarro</item>
+        <item>Urano-Bizarro</item>
+        <item>Netuno-Bizarro</item>
+        <item>Mercúrio-Paralelo</item>
+        <item>Vênus-Paralelo</item>
+        <item>Terra-Paralelo</item>
+        <item>Marte-Paralelo</item>
+        <item>Júpiter-Paralelo</item>
+        <item>Saturno-Paralelo</item>
+        <item>Urano-Paralelo</item>
+        <item>Netuno-Paralelo</item>
+    </string-array>
+    <string name="title_activity_grid_layout">GridLayout</string>
+</resources>
