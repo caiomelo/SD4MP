@@ -26,12 +26,16 @@ public class TasksProvider extends ContentProvider {
     static final String ID = "id";
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
+    static final String STATUS = "status";
+    static final String DATE = "date";
 
     private static HashMap<String, String> TASKS_PROJECTION_MAP;
 
 
     static final int TASKS = 1;
     static final int TASK_ID = 2;
+    static final int TASK_TODO = 3;
+    static final int TASK_DONE = 4;
 
     static final UriMatcher uriMatcher;
 
@@ -39,15 +43,17 @@ public class TasksProvider extends ContentProvider {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(AUTHORITY_NAME, "tasks", TASKS);
         uriMatcher.addURI(AUTHORITY_NAME, "tasks/#", TASK_ID);
+        uriMatcher.addURI(AUTHORITY_NAME, "tasks/status/todo", TASK_TODO);
+        uriMatcher.addURI(AUTHORITY_NAME, "tasks/status/done", TASK_DONE);
     }
 
     private SQLiteDatabase database;
     static final String DATABASE_NAME = "MyTodoList.db";
-    static final int DATABASE_VERSION = 3;
+    static final int DATABASE_VERSION = 5;
     static final String TASKS_TABLE_NAME = "tasks";
     static final String CREATE_DB_TABLE = "create table " + TASKS_TABLE_NAME +
             " (id integer primary key autoincrement," +
-            " title text, description text)";
+            " title text, description text, status text, date text)";
 
     @Override
     public boolean onCreate() {
@@ -82,6 +88,13 @@ public class TasksProvider extends ContentProvider {
             case TASK_ID:
                 queryBuilder.appendWhere(ID + "=" + uri.getPathSegments().get(1));
                 break;
+            case TASK_TODO:
+                queryBuilder.appendWhere(STATUS + "='false'");
+                break;
+            case TASK_DONE:
+                queryBuilder.appendWhere(STATUS + "='true'");
+                break;
+
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }

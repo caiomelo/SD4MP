@@ -2,6 +2,7 @@ package br.ufc.dc.sd4mp.todo.mytodolist;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,8 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class MyTodoList extends Activity {
@@ -27,27 +34,14 @@ public class MyTodoList extends Activity {
         ContentValues values = new ContentValues();
         values.put(TasksProvider.TITLE, titleText.getText().toString());
         values.put(TasksProvider.DESCRIPTION, contentText.getText().toString());
+        values.put(TasksProvider.STATUS, Util.getStatus((RadioGroup) findViewById(R.id.buttons_radio)));
+        values.put(TasksProvider.DATE, Util.formatDate(new Date(), Util.DATE_TIME));
 
         Uri uri = getContentResolver().insert(TasksProvider.CONTENT_URI, values);
-        Toast.makeText(getBaseContext(), uri.toString(), Toast.LENGTH_LONG).show();
     }
 
-    public void listTasks(View view) {
-        StringBuffer buffer = new StringBuffer();
-        String URL = TasksProvider.URL;
-        Uri notesURI = Uri.parse(URL);
-        Cursor cursor = getContentResolver().query(notesURI, null, null, null, TasksProvider.ID);
-        if (cursor.moveToFirst()) {
-            do {
-                Task task = new Task();
-                task.setId(cursor.getInt(cursor.getColumnIndex(TasksProvider.ID)));
-                task.setTitle(cursor.getString(cursor.getColumnIndex(TasksProvider.TITLE)));
-                task.setDescription(cursor.getString(cursor.getColumnIndex(TasksProvider.DESCRIPTION)));
-                buffer.append(task.toString());
-                buffer.append("\n\n");
-            } while (cursor.moveToNext());
-        }
-        TextView list = (TextView) findViewById(R.id.textViewTasks);
-        list.setText(buffer.toString());
+    public void listTasksActivity(View view) {
+        Intent intent = new Intent(this, ListTasks.class);
+        startActivity(intent);
     }
 }
