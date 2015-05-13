@@ -14,7 +14,6 @@ public class Util {
 
     public static final String DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE = "yyyy-MM-dd";
-    public static final String NEW_LINE = System.getProperty("line.separator");
 
     public static String formatDate(Date date, String dateFormatString) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatString
@@ -31,7 +30,7 @@ public class Util {
         boolean status = false;
         int selectedId = statusRadio.getCheckedRadioButtonId();
 
-        if (selectedId == R.id.button_radio_done) {
+        if (selectedId == R.id.button_radio_done || selectedId == R.id.button_radio_done2) {
             status = true;
         }
 

@@ -10,6 +10,8 @@ import java.util.Locale;
  */
 public class Task {
 
+    private final String NEW_LINE = System.getProperty("line.separator");
+
     private int id;
     private String title;
     private String description;
@@ -56,13 +58,15 @@ public class Task {
         this.status = status;
     }
 
+    public boolean getStatusRaw() {
+        return this.status;
+    }
+
     public String getStatus() {
         return this.status ? "Done" : "To Do";
     }
 
-
-
     public String toString() {
-        return "(" + getId() + ")" + getTitle() + ": " + getDescription() + Util.NEW_LINE + "In " + getDate() + Util.NEW_LINE + getStatus();
+        return "Title: " + getTitle() + NEW_LINE + "Description: " + getDescription() + NEW_LINE + "Date: " + getDate() + NEW_LINE + getStatus();
     }
 }

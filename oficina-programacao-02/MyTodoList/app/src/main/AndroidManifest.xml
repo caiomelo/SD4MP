@@ -26,6 +26,14 @@
             android:name=".ListTasks"
             android:label="@string/title_activity_list_tasks" >
         </activity>
+        <activity
+            android:name=".EditTask"
+            android:label="@string/title_activity_edit_task" >
+        </activity>
+        <activity
+            android:name=".SendEmail"
+            android:label="@string/title_activity_send_email" >
+        </activity>
     </application>
 
 </manifest>

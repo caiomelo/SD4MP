@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">MyTodoList</string>
+    <string name="app_name">My ToDo List</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_list_tasks">ListTasks</string>
+    <string name="title_activity_list_tasks">List Tasks</string>
+    <string name="title_activity_edit_task">Edit Task</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_send_email">Send ToDo by Email</string>
 </resources>

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,16 +6,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context=".MyTodoList">
+    tools:context="br.ufc.dc.sd4mp.todo.mytodolist.EditTask">
 
     <RelativeLayout
-        android:id="@+id/taskinfo_layout"
+        android:id="@+id/taskinfo_layout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editTaskTitle"
+            android:id="@+id/editTaskTitle2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
@@ -25,29 +24,28 @@
         </EditText>
 
         <EditText
-            android:id="@+id/editTaskDescription"
+            android:id="@+id/editTaskDescription2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTaskTitle"
+            android:layout_below="@+id/editTaskTitle2"
             android:hint="Task description"
             android:inputType="textCapSentences" />
 
         <RadioGroup
-            android:id="@+id/buttons_radio"
-            android:layout_below="@+id/editTaskDescription"
+            android:id="@+id/buttons_radio2"
+            android:layout_below="@+id/editTaskDescription2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/button_radio_todo"
+                android:id="@+id/button_radio_todo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Do"
-                android:checked="true" />
+                android:text="To Do" />
 
             <RadioButton
-                android:id="@+id/button_radio_done"
+                android:id="@+id/button_radio_done2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Done" />
@@ -57,35 +55,27 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/buttons_layout"
+        android:id="@+id/buttons_layout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/taskinfo_layout">
+        android:layout_below="@+id/taskinfo_layout2">
 
 
         <Button
-            android:id="@+id/buttonAdd"
+            android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:onClick="addTask"
-            android:text="Add" />
-
-        <Button
-            android:id="@+id/buttonEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:onClick="sendEmail"
-            android:text="Email pending" />
+            android:onClick="cancel"
+            android:text="Cancel" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List"
-            android:id="@+id/listButton"
-            android:onClick="listTasksActivity"
-            android:layout_alignParentRight="true"
-            />
+            android:text="Done"
+            android:id="@+id/listDone"
+            android:onClick="updateTask"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
-</LinearLayout>
+
+</RelativeLayout>
